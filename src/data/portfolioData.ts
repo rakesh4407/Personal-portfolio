@@ -75,8 +75,7 @@ export const projects = [
       'Developed an interactive Power BI dashboard to monitor revenue, profit, and budget variance',
       'Identified key seasonal trends and regional performance disparities',
     ],
-    // TODO: Replace with your actual repo URL, e.g. https://github.com/rakesh4407/regional-sales-analysis
-    github: '',
+    github: 'https://github.com/rakesh4407/Regional-Sales-Analysis',
     category: 'Data Analytics',
   },
   {
@@ -96,8 +95,7 @@ export const projects = [
       'Added certificate expiry monitoring with real-time analytics dashboard',
       'Developed Excel import/export functionality for bulk operations',
     ],
-    // TODO: Replace with your actual repo URL, e.g. https://github.com/rakesh4407/ssl-dashboard
-    github: '',
+    github: 'https://github.com/rakesh4407/ssl-renewal-dashboard',
     category: 'Full Stack',
   },
   {
@@ -117,8 +115,7 @@ export const projects = [
       'Created KPI dashboard with feature importance visualization',
       'Delivered business-oriented insights for targeted retention strategies',
     ],
-    // TODO: Replace with your actual repo URL, e.g. https://github.com/rakesh4407/customer-churn-prediction
-    github: '',
+    github: 'https://github.com/rakesh4407/customer-churn-prediction-retention-analytics',
     category: 'Machine Learning',
   },
   {
