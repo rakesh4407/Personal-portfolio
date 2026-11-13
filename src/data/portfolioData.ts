@@ -1,11 +1,14 @@
 export const personalInfo = {
   name: 'Rakesh G',
   title: 'Data Analyst | AI & Data Science Student',
+  headline: 'Building Intelligent Systems Through AI, Data & Engineering.',
+  intro:
+    "Hi, I'm Rakesh G — a Data Analyst and AI & Data Science student building intelligent solutions through analytics, machine learning, and engineering.",
   location: 'Chennai, India',
   email: 'rakee4407@gmail.com',
   github: 'https://github.com/rakesh4407',
   linkedin: 'https://linkedin.com/in/rakesh-bca',
-  website: 'https://personal-portfolio-liard-rho-69.vercel.app',
+  website: 'https://rakesh-g-portfolio.vercel.app',
 } as const;
 
 export const education = {
@@ -28,32 +31,31 @@ export const skills = [
     items: ['Pandas', 'NumPy', 'Data Cleaning', 'EDA', 'Matplotlib', 'Seaborn'],
   },
   {
-    category: 'Business Intelligence',
-    icon: 'PieChart',
-    items: ['Power BI', 'Microsoft Excel'],
-  },
-  {
-    category: 'Databases & Tools',
-    icon: 'Database',
-    items: ['MySQL', 'MongoDB', 'Git', 'Flask'],
-  },
-  {
     category: 'Machine Learning',
     icon: 'Brain',
-    items: ['Scikit-learn', 'Predictive Modeling'],
+    items: ['Scikit-learn', 'Predictive Modeling', 'Classification', 'Feature Engineering'],
   },
   {
-    category: 'Web Development',
-    icon: 'Globe',
-    items: ['HTML', 'CSS', 'JavaScript'],
+    category: 'Deep Learning & GenAI',
+    icon: 'Sparkles',
+    items: ['Neural Networks', 'LLM Concepts', 'Prompt Engineering'],
+  },
+  {
+    category: 'Business Intelligence',
+    icon: 'PieChart',
+    items: ['Power BI', 'Microsoft Excel', 'Dashboard Design'],
+  },
+  {
+    category: 'Backend & Tools',
+    icon: 'Server',
+    items: ['Flask', 'MySQL', 'MongoDB', 'Git', 'GitHub', 'VS Code'],
   },
 ] as const;
 
 /*
  * ──────────────────────────────────────────────────────────
- *  PROJECTS — EDIT GITHUB URLS BELOW
- *  Replace placeholder URLs with your actual repository URLs.
- *  Format: https://github.com/rakesh4407/<repo-name>
+ *  PROJECTS — UPDATE GITHUB URLS WITH YOUR ACTUAL REPOS
+ *  Replace placeholder URLs below.
  * ──────────────────────────────────────────────────────────
  */
 export const projects = [
@@ -65,16 +67,15 @@ export const projects = [
       'Analyzed four years of US regional sales data to identify revenue patterns, profitability, and business opportunities across different channels and regions.',
     problem:
       'A business needed to understand which sales channels and regions were driving profitability versus just volume, and where budget variance was occurring.',
-    methodology:
-      'Performed data cleaning and transformation using Pandas. Conducted exploratory data analysis with Matplotlib and Seaborn to visualize trends. Built an interactive Power BI dashboard for stakeholders.',
+    solution:
+      'Performed end-to-end data analysis: cleaned raw data with Pandas, conducted exploratory analysis with statistical visualizations using Matplotlib and Seaborn, and built an interactive Power BI dashboard for business stakeholders.',
     technologies: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI'],
     achievements: [
       'Discovered that the Export channel contributed ~15% of sales volume while delivering the highest profit margin of ~38%',
       'Developed an interactive Power BI dashboard to monitor revenue, profit, and budget variance',
       'Identified key seasonal trends and regional performance disparities',
     ],
-    // TODO: Replace with actual repository URL, e.g.:
-    // github: 'https://github.com/rakesh4407/regional-sales-analysis',
+    // TODO: Replace with your actual repo URL
     github: 'https://github.com/rakesh4407',
     category: 'Data Analytics',
   },
@@ -86,30 +87,29 @@ export const projects = [
       'Developed a full-stack dashboard to centralize SSL certificate monitoring and renewal tracking for enterprise environments.',
     problem:
       'Organizations managing hundreds of SSL certificates lacked a centralized system to track expiry dates, resulting in missed renewals and potential security risks.',
-    methodology:
+    solution:
       'Built a PHP backend with MySQL database for certificate data storage. Developed a Python-based TLS scanner for automated metadata extraction. Created Chart.js-powered analytics views with role-based access control.',
     technologies: ['PHP', 'Python', 'MySQL', 'Chart.js'],
     achievements: [
       'Built role-based authentication system for multi-user access',
-      'Implemented automated risk categorization: Critical, Urgent, and Reminder classifications',
+      'Implemented automated risk categorization: Critical, Urgent, and Reminder',
       'Added certificate expiry monitoring with real-time analytics dashboard',
       'Developed Excel import/export functionality for bulk operations',
     ],
-    // TODO: Replace with actual repository URL, e.g.:
-    // github: 'https://github.com/rakesh4407/ssl-certificate-dashboard',
+    // TODO: Replace with your actual repo URL
     github: 'https://github.com/rakesh4407',
     category: 'Full Stack',
   },
   {
     id: 3,
-    title: 'Customer Churn Prediction & Retention Analytics',
+    title: 'Customer Churn Prediction',
     tagline: 'ML-powered customer retention risk analysis',
     description:
       'Developed a machine learning application to predict customer churn and help businesses understand customer retention risks using telecom data.',
     problem:
       'Telecom businesses needed to proactively identify customers likely to churn and understand key retention drivers to reduce revenue loss.',
-    methodology:
-      'Preprocessed 7,000+ customer records using Pandas. Trained a Random Forest classifier with Scikit-learn, optimizing for precision-recall balance. Built a Flask web app with real-time prediction, confidence scoring, and KPI dashboard.',
+    solution:
+      'Preprocessed 7,000+ customer records using Pandas. Trained a Random Forest classifier with Scikit-learn, optimizing for precision-recall balance. Built a Flask web app with real-time prediction and KPI dashboard.',
     technologies: ['Python', 'Flask', 'Scikit-learn', 'Pandas'],
     achievements: [
       'Built Random Forest classification model on 7,000+ telecom customer records',
@@ -117,10 +117,28 @@ export const projects = [
       'Created KPI dashboard with feature importance visualization',
       'Delivered business-oriented insights for targeted retention strategies',
     ],
-    // TODO: Replace with actual repository URL, e.g.:
-    // github: 'https://github.com/rakesh4407/customer-churn-prediction',
+    // TODO: Replace with your actual repo URL
     github: 'https://github.com/rakesh4407',
     category: 'Machine Learning',
+  },
+  {
+    id: 4,
+    title: 'IPL Sentiment Analysis',
+    tagline: 'NLP-driven social media opinion mining',
+    description:
+      'Analyzed public sentiment around IPL cricket matches using natural language processing techniques on social media data.',
+    problem:
+      'Understanding fan sentiment and public opinion trends during IPL matches from unstructured social media text data.',
+    solution:
+      'Collected and preprocessed social media text data. Applied NLP techniques for text cleaning, tokenization, and sentiment classification. Visualized sentiment trends and patterns.',
+    technologies: ['Python', 'NLP', 'Pandas', 'Matplotlib'],
+    achievements: [
+      'Processed and classified sentiment from social media posts',
+      'Identified sentiment trends correlated with match events',
+      'Built visualization dashboards for sentiment distribution',
+    ],
+    github: 'https://github.com/rakesh4407/IPL-sentiment-analysis',
+    category: 'NLP',
   },
 ] as const;
 
@@ -180,14 +198,7 @@ export const navItems = [
 ] as const;
 
 /*
- * ──────────────────────────────────────────────────────────
- *  FORMSPREE INTEGRATION (optional)
- *  Sign up at https://formspree.io, create a form, and
- *  paste your form endpoint below to enable direct email
- *  delivery without requiring the visitor's email client.
- *
- *  Example: 'https://formspree.io/f/xyzabcde'
- *  Leave empty string to keep the mailto fallback.
- * ──────────────────────────────────────────────────────────
+ * Formspree endpoint — set to enable direct email delivery
+ * Example: 'https://formspree.io/f/xyzabcde'
  */
 export const formspreeEndpoint = '';
