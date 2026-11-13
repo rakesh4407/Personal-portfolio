@@ -76,3 +76,34 @@ body {
 .glow-blue {
   box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
 }
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Improve mobile tap targets */
+@media (max-width: 640px) {
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Skip to content (accessibility) */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}

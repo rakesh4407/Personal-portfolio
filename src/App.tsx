@@ -17,8 +17,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-dark text-white">
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
       <Navbar activeSection={activeSection} />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Skills />
