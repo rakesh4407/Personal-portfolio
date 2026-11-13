@@ -109,14 +109,20 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-all self-start"
-                    >
-                      <ExternalLink size={14} /> View Code
-                    </a>
+                    {project.github ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-all self-start"
+                      >
+                        <ExternalLink size={14} /> View Code
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-sm text-gray-500 self-start cursor-default">
+                        <ExternalLink size={14} /> Repo Coming Soon
+                      </span>
+                    )}
                   </div>
                 </div>
               </motion.div>
