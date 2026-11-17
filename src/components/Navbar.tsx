@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Terminal } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from './ui/SocialIcons';
+import TelemetryHUD from './ui/TelemetryHUD';
 import { navItems } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection: string;
+  onOpenCommandPalette?: () => void;
 }
 
-export default function Navbar({ activeSection }: NavbarProps) {
+export default function Navbar({ activeSection, onOpenCommandPalette }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -31,10 +33,13 @@ export default function Navbar({ activeSection }: NavbarProps) {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-xl bg-[#0f172a]/80 border-b border-white/5 shadow-lg shadow-black/10'
-          : 'bg-transparent'
+          ? 'backdrop-blur-xl bg-[#050811]/90 border-b border-primary/20 shadow-2xl shadow-primary/5'
+          : 'bg-[#050811]/60 backdrop-blur-md border-b border-white/5'
       }`}
     >
+      {/* SpaceX Mission Telemetry Bar */}
+      <TelemetryHUD onOpenCommandPalette={onOpenCommandPalette || (() => {})} />
+
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a
@@ -69,6 +74,17 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
         {/* Right Side */}
         <div className="hidden lg:flex items-center gap-3">
+          {onOpenCommandPalette && (
+            <button
+              type="button"
+              onClick={onOpenCommandPalette}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 hover:border-primary/40 bg-white/5 hover:bg-primary/10 text-xs font-mono text-gray-300 hover:text-white transition-all cursor-pointer"
+              title="Open Command Palette (⌘K)"
+            >
+              <Terminal size={13} className="text-primary-light" />
+              <span>⌘K</span>
+            </button>
+          )}
           <a
             href="https://github.com/rakesh4407"
             target="_blank"
@@ -129,6 +145,20 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 </button>
               ))}
               <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                {onOpenCommandPalette && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsOpen(false);
+                      onOpenCommandPalette();
+                    }}
+                    className="p-2 text-primary-light hover:text-white flex items-center gap-1 text-xs font-mono"
+                    title="Command Palette"
+                  >
+                    <Terminal size={18} />
+                    <span>⌘K</span>
+                  </button>
+                )}
                 <a href="https://github.com/rakesh4407" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-white"><GitHubIcon size={18} /></a>
                 <a href="https://linkedin.com/in/rakesh-bca" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-white"><LinkedInIcon size={18} /></a>
                 <a href="/Rakesh_G_Resume.pdf" download className="ml-auto flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary-light border border-primary/20 text-sm font-medium">
