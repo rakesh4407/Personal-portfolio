@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, ArrowRight, Download } from 'lucide-react';
+import { MapPin, ArrowRight, Download, Copy, Check } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from './ui/SocialIcons';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Hero() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personalInfo.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const container = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
@@ -71,13 +80,22 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            <motion.div variants={item} className="flex items-center gap-3">
-              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+            <motion.div variants={item} className="flex flex-wrap items-center gap-3">
+              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="GitHub">
                 <GitHubIcon size={18} />
               </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LinkedIn">
                 <LinkedInIcon size={18} />
               </a>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 text-xs font-medium transition-all"
+                title="Copy email to clipboard"
+              >
+                {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} className="text-primary-light" />}
+                <span>{copied ? 'Email Copied!' : 'Copy Email'}</span>
+              </button>
             </motion.div>
           </motion.div>
 
@@ -113,6 +131,35 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
+
+        {/* Key Impact Metrics */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-14 sm:mt-18 pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          <div className="glass-card p-4 rounded-xl border border-white/5 text-center sm:text-left hover:border-primary/30 transition-all">
+            <div className="text-2xl sm:text-3xl font-bold font-heading gradient-text">9.22<span className="text-sm font-normal text-gray-400">/10</span></div>
+            <div className="text-xs uppercase tracking-wider text-gray-400 mt-1 font-medium">Academic CGPA</div>
+            <div className="text-[11px] text-gray-500 mt-0.5">Top Tier Performance</div>
+          </div>
+          <div className="glass-card p-4 rounded-xl border border-white/5 text-center sm:text-left hover:border-primary/30 transition-all">
+            <div className="text-2xl sm:text-3xl font-bold font-heading text-white">4+</div>
+            <div className="text-xs uppercase tracking-wider text-gray-400 mt-1 font-medium">Core Projects</div>
+            <div className="text-[11px] text-gray-500 mt-0.5">ML, Analytics & Full-Stack</div>
+          </div>
+          <div className="glass-card p-4 rounded-xl border border-white/5 text-center sm:text-left hover:border-primary/30 transition-all">
+            <div className="text-2xl sm:text-3xl font-bold font-heading gradient-text">7,000+</div>
+            <div className="text-xs uppercase tracking-wider text-gray-400 mt-1 font-medium">Records Modeled</div>
+            <div className="text-[11px] text-gray-500 mt-0.5">Customer Churn Analytics</div>
+          </div>
+          <div className="glass-card p-4 rounded-xl border border-white/5 text-center sm:text-left hover:border-primary/30 transition-all">
+            <div className="text-2xl sm:text-3xl font-bold font-heading text-white">1 Year</div>
+            <div className="text-xs uppercase tracking-wider text-gray-400 mt-1 font-medium">Internship</div>
+            <div className="text-[11px] text-gray-500 mt-0.5">The SSL Lock</div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

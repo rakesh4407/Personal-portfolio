@@ -2,6 +2,8 @@ import { Mail, Heart } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from './ui/SocialIcons';
 import { navItems, personalInfo } from '../data/portfolioData';
 
+const currentYear = new Date().getFullYear();
+
 export default function Footer() {
   const handleNavClick = (item: string) => {
     document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
@@ -51,7 +53,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-white/5 text-center">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Rakesh G. All rights reserved.
+            © {currentYear} Rakesh G. All rights reserved.
           </p>
           <p className="text-xs text-gray-600 mt-1 flex items-center justify-center gap-1">
             Built with passion <Heart size={12} className="text-red-400" /> and purpose.

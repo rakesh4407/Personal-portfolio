@@ -19,115 +19,157 @@ const categoryIcons: Record<string, React.ComponentType<{ size?: number; classNa
   'NLP': MessageSquare,
 };
 
+const categories = ['All', 'Data Analytics', 'Machine Learning', 'Full Stack', 'NLP'] as const;
+type Category = typeof categories[number];
+
 export default function Projects() {
   const { ref, controls } = useScrollReveal(0.05);
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<Category>('All');
+
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter((p) => p.category === selectedCategory);
 
   return (
     <section id="projects" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6">
         <SectionHeading title="Featured Projects." subtitle="My Work" />
+
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10 -mt-6">
+          {categories.map((cat) => {
+            const count = cat === 'All' ? projects.length : projects.filter((p) => p.category === cat).length;
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
+                  isSelected
+                    ? 'bg-primary text-white shadow-lg shadow-primary/25 border border-primary-light/40'
+                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5'
+                }`}
+              >
+                <span>{cat}</span>
+                <span className={`text-[11px] px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-white/20 text-white' : 'bg-white/5 text-gray-500'}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
         <motion.div
           ref={ref}
+          layout
           initial="hidden"
           animate={controls}
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12 } } }}
           className="grid md:grid-cols-2 gap-6"
         >
-          {projects.map((project, idx) => {
-            const isExpanded = expandedId === project.id;
-            const CatIcon = categoryIcons[project.category] || BarChart3;
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, idx) => {
+              const isExpanded = expandedId === project.id;
+              const CatIcon = categoryIcons[project.category] || BarChart3;
 
-            return (
-              <motion.div
-                key={project.id}
-                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
-              >
-                <div className="h-full glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
-                  {/* Header */}
-                  <div className={`p-5 bg-gradient-to-br ${gradients[idx % gradients.length]}`}>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-medium text-white/70 px-2.5 py-1 rounded-full bg-white/10 border border-white/10">
-                        <CatIcon size={12} /> {project.category}
-                      </span>
-                      <span className="text-xs text-white/40 font-mono">#{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-white font-heading">{project.title}</h3>
-                    <p className="text-sm text-white/60 mt-1">{project.tagline}</p>
-                  </div>
-
-                  {/* Body */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    <div className="mb-3">
-                      <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-1">Problem</h4>
-                      <p className="text-sm text-gray-400 leading-relaxed">{project.problem}</p>
-                    </div>
-
-                    <button
-                      onClick={() => setExpandedId(isExpanded ? null : project.id)}
-                      className="flex items-center gap-1 text-xs font-medium text-primary-light hover:text-white transition-colors mb-3 self-start"
-                    >
-                      {isExpanded ? 'Hide' : 'View'} Solution & Details
-                      {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                    </button>
-
-                    <AnimatePresence>
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="overflow-hidden mb-3"
-                        >
-                          <div className="pb-3 border-b border-white/5 space-y-2">
-                            <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">Solution</h4>
-                            <p className="text-sm text-gray-400 leading-relaxed">{project.solution}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    <div className="mb-4">
-                      <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Outcomes</h4>
-                      <ul className="space-y-1.5">
-                        {project.achievements.slice(0, 3).map((a, i) => (
-                          <li key={i} className="text-sm text-gray-300 flex gap-2">
-                            <ArrowUpRight size={13} className="text-primary-light shrink-0 mt-0.5" />
-                            <span>{a}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="px-2 py-1 rounded-full bg-primary/10 text-primary-light text-xs font-medium border border-primary/20">
-                          {tech}
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="h-full glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col group">
+                    {/* Header */}
+                    <div className={`p-5 bg-gradient-to-br ${gradients[idx % gradients.length]} border-b border-white/5`}>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-white/80 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm">
+                          <CatIcon size={12} /> {project.category}
                         </span>
-                      ))}
+                        <span className="text-xs text-white/50 font-mono">#{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-white font-heading group-hover:text-primary-light transition-colors">{project.title}</h3>
+                      <p className="text-sm text-white/70 mt-1">{project.tagline}</p>
                     </div>
 
-                    {project.github ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-all self-start"
+                    {/* Body */}
+                    <div className="p-5 flex-1 flex flex-col">
+                      <div className="mb-3">
+                        <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-1">Problem</h4>
+                        <p className="text-sm text-gray-400 leading-relaxed">{project.problem}</p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setExpandedId(isExpanded ? null : project.id)}
+                        className="flex items-center gap-1 text-xs font-medium text-primary-light hover:text-white transition-colors mb-3 self-start cursor-pointer"
                       >
-                        <ExternalLink size={14} /> View Code
-                      </a>
-                    ) : (
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-sm text-gray-500 self-start cursor-default">
-                        <ExternalLink size={14} /> Repo Coming Soon
-                      </span>
-                    )}
+                        {isExpanded ? 'Hide' : 'View'} Solution & Details
+                        {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                      </button>
+
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden mb-3"
+                          >
+                            <div className="pb-3 border-b border-white/5 space-y-2">
+                              <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">Solution</h4>
+                              <p className="text-sm text-gray-400 leading-relaxed">{project.solution}</p>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      <div className="mb-4">
+                        <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Outcomes</h4>
+                        <ul className="space-y-1.5">
+                          {project.achievements.slice(0, 3).map((a, i) => (
+                            <li key={i} className="text-sm text-gray-300 flex gap-2">
+                              <ArrowUpRight size={13} className="text-primary-light shrink-0 mt-0.5" />
+                              <span>{a}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
+                        {project.technologies.map((tech) => (
+                          <span key={tech} className="px-2 py-1 rounded-full bg-primary/10 text-primary-light text-xs font-medium border border-primary/20">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {project.github ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:text-white hover:bg-primary hover:border-primary transition-all self-start shadow-sm"
+                        >
+                          <ExternalLink size={14} /> View Code
+                        </a>
+                      ) : (
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-sm text-gray-500 self-start cursor-default">
+                          <ExternalLink size={14} /> Repo Coming Soon
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

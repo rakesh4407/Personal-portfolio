@@ -52,6 +52,17 @@ export default function Experience() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-6 pt-5 border-t border-white/5">
+              <h4 className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">Applied Technologies</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Python', 'Pandas', 'PHP', 'MySQL', 'TLS / SSL Security', 'Matplotlib'].map((tech) => (
+                  <span key={tech} className="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs font-medium border border-white/10 hover:border-primary/40 hover:text-primary-light transition-all">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </GlassCard>
         </motion.div>
       </div>
