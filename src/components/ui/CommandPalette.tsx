@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, FolderGit2, Cpu, GraduationCap, Briefcase, Download, Mail, ArrowRight, ExternalLink, X, Sparkles } from 'lucide-react';
+import { Search, FolderGit2, Cpu, GraduationCap, Briefcase, Download, Mail, ArrowRight, ExternalLink, X, Sparkles, Layers, BookOpen } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
 
 interface CommandPaletteProps {
@@ -53,12 +53,28 @@ export default function CommandPalette({ isOpen, onClose, onSelectAction }: Comm
       },
     },
     {
+      id: 'architecture',
+      title: 'Inspect System Architecture Blueprints',
+      description: 'Review end-to-end data pipeline diagrams and phases',
+      icon: Layers,
+      category: 'Navigation',
+      action: () => scrollTo('architecture'),
+    },
+    {
       id: 'projects',
       title: 'Explore Featured Projects',
       description: 'View 4 verified engineering repos and architectures',
       icon: FolderGit2,
       category: 'Navigation',
       action: () => scrollTo('projects'),
+    },
+    {
+      id: 'notes',
+      title: 'Read Engineering Logs & Case Studies',
+      description: 'Technical writeups on class imbalance, TLS sockets & EDA',
+      icon: BookOpen,
+      category: 'Navigation',
+      action: () => scrollTo('notes'),
     },
     {
       id: 'skills',

@@ -5,8 +5,10 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
+import ArchitectureVisualizer from './components/ArchitectureVisualizer';
 import ModelSimulator from './components/ModelSimulator';
 import Projects from './components/Projects';
+import TechnicalNotes from './components/TechnicalNotes';
 import Education from './components/Education';
 import Achievements from './components/Achievements';
 import Learning from './components/Learning';
@@ -51,9 +53,13 @@ export default function App() {
         <About />
         <Skills />
         <Experience />
+        {/* System Architectures & Pipeline Blueprints */}
+        <ArchitectureVisualizer />
         {/* NVIDIA AI Lab / Live Model Inference Playground */}
         <ModelSimulator />
         <Projects />
+        {/* Engineering Logs & Case Studies */}
+        <TechnicalNotes />
         <Education />
         <Achievements />
         <Learning />

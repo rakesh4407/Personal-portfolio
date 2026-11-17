@@ -189,7 +189,9 @@ export const navItems = [
   'About',
   'Skills',
   'Experience',
+  'Architecture',
   'Projects',
+  'Notes',
   'Education',
   'Contact',
 ] as const;

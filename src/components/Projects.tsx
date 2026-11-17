@@ -97,6 +97,101 @@ export default function Projects() {
                       <p className="text-sm text-white/70 mt-1">{project.tagline}</p>
                     </div>
 
+                    {/* Bespoke Visual Telemetry / Dashboard Mockup Header */}
+                    {project.id === 1 && (
+                      <div className="px-5 py-3 bg-[#070b14] border-b border-white/5 font-mono text-[11px]">
+                        <div className="flex justify-between text-gray-500 mb-1.5 text-[10px]">
+                          <span>POWER BI / MARGIN DISCREPANCY</span>
+                          <span className="text-emerald-400 font-semibold">EXPORT: ~38% MARGIN</span>
+                        </div>
+                        <div className="space-y-1.5">
+                          <div>
+                            <div className="flex justify-between text-[10px] text-gray-300">
+                              <span>Export Channel (~15% Volume)</span>
+                              <span className="text-emerald-400 font-bold">38% Profit Margin</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden mt-0.5">
+                              <div className="h-full bg-emerald-400 rounded-full" style={{ width: '88%' }} />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="flex justify-between text-[10px] text-gray-400">
+                              <span>Wholesale Channel (~45% Volume)</span>
+                              <span className="text-gray-400">18% Profit Margin</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden mt-0.5">
+                              <div className="h-full bg-primary/60 rounded-full" style={{ width: '42%' }} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {project.id === 2 && (
+                      <div className="px-5 py-3 bg-[#070b14] border-b border-white/5 font-mono text-[11px]">
+                        <div className="flex justify-between text-gray-500 mb-1.5 text-[10px]">
+                          <span>TLS HEALTH TELEMETRY</span>
+                          <span className="text-emerald-400">AUDIT CADENCE: ACTIVE</span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 text-center">
+                          <div className="bg-white/5 p-1.5 rounded-lg border border-white/5">
+                            <span className="text-[10px] text-gray-500 block">Critical (&lt;15d)</span>
+                            <span className="text-rose-400 font-bold text-xs">03 Alerts</span>
+                          </div>
+                          <div className="bg-white/5 p-1.5 rounded-lg border border-white/5">
+                            <span className="text-[10px] text-gray-500 block">Urgent (&lt;30d)</span>
+                            <span className="text-amber-400 font-bold text-xs">12 Expiring</span>
+                          </div>
+                          <div className="bg-white/5 p-1.5 rounded-lg border border-white/5">
+                            <span className="text-[10px] text-gray-500 block">Nominal (&gt;60d)</span>
+                            <span className="text-emerald-400 font-bold text-xs">369 Secure</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {project.id === 3 && (
+                      <div className="px-5 py-3 bg-[#070b14] border-b border-white/5 font-mono text-[11px]">
+                        <div className="flex justify-between text-gray-500 mb-1.5 text-[10px]">
+                          <span>RANDOM FOREST CLASSIFIER</span>
+                          <span className="text-primary-light">7,043 TELECOM RECORDS</span>
+                        </div>
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex-1 bg-white/5 p-1.5 rounded-lg border border-white/5 text-center">
+                            <span className="text-[10px] text-gray-500 block">ROC-AUC</span>
+                            <span className="text-primary-light font-bold text-xs">0.84</span>
+                          </div>
+                          <div className="flex-1 bg-white/5 p-1.5 rounded-lg border border-white/5 text-center">
+                            <span className="text-[10px] text-gray-500 block">Class Balance</span>
+                            <span className="text-emerald-400 font-bold text-xs">Weighted</span>
+                          </div>
+                          <div className="flex-1 bg-white/5 p-1.5 rounded-lg border border-white/5 text-center">
+                            <span className="text-[10px] text-gray-500 block">Inference</span>
+                            <span className="text-cyan-400 font-bold text-xs">&lt;2ms</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {project.id === 4 && (
+                      <div className="px-5 py-3 bg-[#070b14] border-b border-white/5 font-mono text-[11px]">
+                        <div className="flex justify-between text-gray-500 mb-1.5 text-[10px]">
+                          <span>NLP SENTIMENT MINING</span>
+                          <span className="text-cyan-400">MATCH TIMELINE POLARITY</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <div className="h-2 rounded-l-full bg-emerald-400" style={{ width: '64%' }} />
+                          <div className="h-2 bg-amber-400" style={{ width: '22%' }} />
+                          <div className="h-2 rounded-r-full bg-rose-400" style={{ width: '14%' }} />
+                        </div>
+                        <div className="flex justify-between text-[10px] text-gray-400 mt-1">
+                          <span className="text-emerald-400 font-semibold">64% Positive</span>
+                          <span className="text-amber-400">22% Neutral</span>
+                          <span className="text-rose-400">14% Negative</span>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Body */}
                     <div className="p-5 flex-1 flex flex-col">
                       <div className="mb-3">
