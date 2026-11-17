@@ -58,7 +58,7 @@ export default function ModelSimulator() {
   };
 
   return (
-    <section id="ai-playground" className="py-24 relative overflow-hidden">
+    <section id="ai-playground" className="py-24 relative overflow-hidden scroll-mt-24">
       {/* Background ambient glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[160px] pointer-events-none" />

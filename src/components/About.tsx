@@ -77,7 +77,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-24 relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading title="Beyond the Data." subtitle="About Me" />
 

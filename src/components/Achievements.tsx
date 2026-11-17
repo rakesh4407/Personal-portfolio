@@ -9,7 +9,7 @@ export default function Achievements() {
   const { ref, controls } = useScrollReveal();
 
   return (
-    <section className="py-24 relative">
+    <section id="achievements" className="py-24 relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading title="Recognition & Credentials." subtitle="Achievements" />
 

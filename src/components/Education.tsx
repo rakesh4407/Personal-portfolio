@@ -9,7 +9,7 @@ export default function Education() {
   const { ref, controls } = useScrollReveal();
 
   return (
-    <section id="education" className="py-24 relative">
+    <section id="education" className="py-24 relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading title="Academic Foundation." subtitle="Education" />
 

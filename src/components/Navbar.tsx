@@ -56,14 +56,15 @@ export default function Navbar({ activeSection, onOpenCommandPalette }: NavbarPr
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
           {navItems.map((item) => (
             <button
               key={item}
+              type="button"
               onClick={() => handleNavClick(item)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-2.5 xl:px-3.5 py-1.5 rounded-lg text-xs xl:text-sm font-medium transition-all duration-200 cursor-pointer ${
                 activeSection === item.toLowerCase()
-                  ? 'text-primary-light bg-white/5'
+                  ? 'text-primary-light bg-white/5 shadow-inner'
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >

@@ -90,7 +90,7 @@ export default function Contact() {
     }`;
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           title="Have an Interesting Idea? Let's Connect."

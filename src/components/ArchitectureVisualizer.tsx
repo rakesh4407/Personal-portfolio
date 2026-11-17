@@ -167,7 +167,7 @@ export default function ArchitectureVisualizer() {
   const activeSystem = systems.find((s) => s.id === selectedId) || systems[0];
 
   return (
-    <section id="architecture" className="py-24 relative overflow-hidden">
+    <section id="architecture" className="py-24 relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6">

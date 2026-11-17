@@ -12,7 +12,7 @@ export default function Learning() {
   const { ref, controls } = useScrollReveal();
 
   return (
-    <section className="py-24 relative">
+    <section id="learning" className="py-24 relative scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6">

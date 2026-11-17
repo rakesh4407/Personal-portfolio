@@ -4,7 +4,17 @@ export function useActiveSection() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const sectionIds = ['home', 'about', 'skills', 'experience', 'projects', 'education', 'contact'];
+    const sectionIds = [
+      'home',
+      'about',
+      'skills',
+      'experience',
+      'architecture',
+      'projects',
+      'notes',
+      'education',
+      'contact',
+    ];
 
     const observer = new IntersectionObserver(
       (entries) => {

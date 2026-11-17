@@ -106,14 +106,14 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
-              <div className="relative p-1 rounded-3xl bg-gradient-to-br from-primary/50 to-accent/50">
-                <div className="rounded-3xl overflow-hidden bg-dark-lighter">
+            <div className="relative mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/25 to-accent/25 rounded-3xl blur-2xl pointer-events-none" />
+              <div className="relative p-1 rounded-3xl bg-gradient-to-br from-primary/60 via-accent/40 to-primary/60 shadow-2xl shadow-primary/20">
+                <div className="rounded-[22px] overflow-hidden bg-dark-lighter aspect-square">
                   <img
                     src="/profile.jpg"
                     alt="Rakesh G — Data Analyst & AI Student"
-                    className="w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] object-cover object-top"
+                    className="w-72 sm:w-80 lg:w-[22rem] h-auto aspect-square object-cover object-top select-none"
                     loading="eager"
                     width={352}
                     height={352}
@@ -124,7 +124,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.4 }}
-                className="absolute -bottom-3 -right-3 px-4 py-2 rounded-xl glass-card text-sm font-medium text-white shadow-xl"
+                className="absolute -bottom-3 right-0 sm:-right-3 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl glass-card text-xs sm:text-sm font-medium text-white shadow-2xl border border-white/20 backdrop-blur-xl"
               >
                 <span className="gradient-text font-semibold">AI & Data Science</span> Student
               </motion.div>

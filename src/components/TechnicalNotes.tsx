@@ -77,7 +77,7 @@ export default function TechnicalNotes() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <section id="notes" className="py-24 relative">
+    <section id="notes" className="py-24 relative scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6">

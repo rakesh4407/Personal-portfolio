@@ -13,7 +13,7 @@ export default function Skills() {
   const { ref, controls } = useScrollReveal();
 
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="skills" className="py-24 relative scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6">
         <SectionHeading title="Technical Arsenal." subtitle="Skills & Technologies" />
